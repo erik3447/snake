@@ -5,27 +5,26 @@ screen.setup(width=600, height=600)
 screen.bgcolor("black")
 screen.title("My Snake Game")
 
-#tail position (0.0)
+# tail position (0.0)
 
-snake_head = Turtle()
-snake_head.shape("square")
-snake_head.color("White")
-snake_head.penup()
-snake_head.goto(0,0)
-snake_head.penup()
+snake_position = [(0, 0), (-20, 0), (-40, 0)]
 
-snake_body = Turtle()
-snake_body.shape("square")
-snake_body.color("White")
-snake_body.penup()
-snake_body.goto(20,0)
+segments = []
 
+for position in snake_position:
+    new_segment = Turtle()
+    new_segment.shape("square")
+    new_segment.color("White")
+    new_segment.penup()
+    new_segment.goto(position)
+    new_segment.penup()
+    segments.append(new_segment)
 
+game_on = True
 
-
-
-
-
+while game_on:
+    for all_segment in segments:
+        all_segment.forward(20)
 
 
 screen.exitonclick()
