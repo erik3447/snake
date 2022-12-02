@@ -1,30 +1,32 @@
 from turtle import Screen, Turtle
+from snake import Snake
+import time
 
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.bgcolor("black")
 screen.title("My Snake Game")
 
-# tail position (0.0)
 
-snake_position = [(0, 0), (-20, 0), (-40, 0)]
+screen.tracer(0)
 
-segments = []
+snake = Snake()
 
-for position in snake_position:
-    new_segment = Turtle()
-    new_segment.shape("square")
-    new_segment.color("White")
-    new_segment.penup()
-    new_segment.goto(position)
-    new_segment.penup()
-    segments.append(new_segment)
+screen.listen()
+
+screen.onkey(snake.left, "Left")
+screen.onkey(snake.up, "Up")
+screen.onkey(snake.right, "Right")
+screen.onkey(snake.down, "Down")
 
 game_on = True
-
 while game_on:
-    for all_segment in segments:
-        all_segment.forward(20)
+    screen.update()
+    time.sleep(0.1)
+    snake.move()
+
+
+
 
 
 screen.exitonclick()
